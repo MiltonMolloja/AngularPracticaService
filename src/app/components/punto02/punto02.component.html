@@ -1,0 +1,29 @@
+<label >Resultado: </label>
+<br>
+<h2>el Valor de Compra es: {{valorCompra}}</h2>
+<h2>el Valor de Venta es: {{valorVenta}}</h2>
+<br>
+
+<input type="number" class="form-control" id="idMontoRecibido"
+      name="montoRecibido"
+      [(ngModel)]="moneda.montoRecibido">
+<br>
+<form>
+    <div class="custom-control custom-radio custom-control-inline">
+      <input type="radio" class="custom-control-input" id="customRadio" name="txtTipoCambio" value="true"
+        [(ngModel)]="moneda.tipoCambio" >
+      <label class="custom-control-label" for="customRadio">Cambio de $ (pesos) a USD (dólar)</label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+      <input type="radio" class="custom-control-input" id="customRadio2" name="txtTipoCambio" value="false"
+        [(ngModel)]="moneda.tipoCambio" >
+      <label class="custom-control-label" for="customRadio2">Cambio de USD (dólar) a $ (pesos)</label>
+    </div>
+  </form>
+<br>
+  <div class="col-md-12 col-sm-12 col-xs-12">
+      <input type="button" class="btn btn-warning btn-block" value="Convertir" (click)="convertirMoneda()" />
+    </div>
+    <br>
+    <h1>Monto a Entregar: <span class="badge badge-secondary">{{montoMostrar}} </span></h1>
+

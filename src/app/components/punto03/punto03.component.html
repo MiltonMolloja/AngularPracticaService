@@ -1,0 +1,45 @@
+<div class="container">
+  <h2>Tradutor:</h2>
+  <form action="">
+    <div class="form-group">
+      <label for="ciudad">Ingrese la Frace a tradicir:</label>
+      <input type="text" class="form-control" id="idCiudad"
+      placeholder="Ej: My dog is duky" name="ciudad"
+      [(ngModel)]="text.text">
+    </div>
+    <br>
+    <label for="ciudad">Selecione Idioma de Origen/Destino:</label>
+    <br>
+    <label for="ciudad">Origen:</label>
+    <select class="form-control" name="IdiomaOrigen"
+    [(ngModel)]="text.org">
+      <option value="en">Inglés</option>
+      <option value="es">Español</option>
+      <option value="pt">Portugués</option>
+      <option value="fr">Francés</option>
+      <option value="ru">Ruso</option>
+      <option value="it">Italiano</option>
+    </select>
+    <br>
+    <label for="ciudad">Destino:</label>
+    <select class="form-control" name="IdiomaDestino"
+    [(ngModel)]="text.des">
+      <option value="en">Inglés</option>
+      <option value="es">Español</option>
+      <option value="pt">Portugués</option>
+      <option value="fr">Francés</option>
+      <option value="ru">Ruso</option>
+      <option value="it">Italiano</option>
+    </select>
+    <br>
+    <button type="submit" class="btn btn-primary" (click)="traducirText(text.org,text.des,text.text)"
+    >Buscar</button>
+  </form>
+  <br>
+  <label >Resultado: </label>
+  <h2>{{resultado}}</h2>
+
+</div>
+
+
+
