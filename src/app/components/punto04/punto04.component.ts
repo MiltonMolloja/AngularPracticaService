@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { OnInit, Component } from '@angular/core';
 
 import { TeamService } from './../../services/punto04/team.service';
 import { Team } from './../../models/punto04/team';
@@ -6,11 +6,13 @@ import { PlayerService } from './../../services/punto04/player.service';
 import { Player } from './../../models/punto04/player';
 import { stringify } from '@angular/core/src/util';
 
+
 @Component({
   selector: 'app-punto04',
   templateUrl: './punto04.component.html',
   styleUrls: ['./punto04.component.css']
 })
+
 export class Punto04Component implements OnInit {
 
   team: Team;
@@ -20,8 +22,8 @@ export class Punto04Component implements OnInit {
   players: Array<Player>;
   playersFiltrado: Array<Player>;
 
-  //totalPaguinaPlayer: var = 31;
-  totalPaguinaPlayer: var = 10;
+  totalPaguinaPlayer : Number = 10;
+//  totalPaguinaPlayer:  = 10;
 
   constructor(private teamService: TeamService,private playerService: PlayerService) {
     this.cargarTeams();
@@ -132,6 +134,7 @@ export class Punto04Component implements OnInit {
         },
         error => {
           alert("Error en la petición");
+          console.log(indexString);
         }
       )
     }

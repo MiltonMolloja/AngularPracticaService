@@ -12,7 +12,7 @@ export class Moneda {
   montoEntregado: number;
   tipoCambio : string;
 
-  Moneda(compra?: number, venta?: number, agencia?: number, nombre?: string, variacion?: number, ventaCero?: boolean, decimales?: number, montoRecibido?: number, montoEntregado?: number,tipoCambio : string) {
+  Moneda(compra?: number, venta?: number, agencia?: number, nombre?: string, variacion?: number, ventaCero?: boolean, decimales?: number, montoRecibido?: number, montoEntregado?: number,tipoCambio ?: string) {
     this.compra = compra;
     this.venta = venta;
     this.agencia = agencia;
