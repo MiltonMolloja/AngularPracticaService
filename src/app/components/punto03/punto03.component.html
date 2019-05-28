@@ -1,29 +1,35 @@
 <div class="container">
   <h2>Tradutor:</h2>
-  <form action="">
+  <form id="formulario" #formMsg="ngForm" action="">
     <div class="form-group">
       <label for="ciudad">Ingrese la Frace a tradicir:</label>
       <input type="text" class="form-control" id="idCiudad"
       placeholder="Ej: My dog is duky" name="ciudad"
-      [(ngModel)]="text.text">
+      [(ngModel)]="text.text"  #contenido="ngModel" ngModel required>
+      <div class="mensaje-de-error" *ngIf="contenido.touched && contenido.invalid">
+        <div class="text-danger font-weight-bolder alert alert-danger" *ngIf="contenido?.errors.required">Texto a traducir es Requerido</div>
+      </div>
     </div>
     <br>
-    <label for="ciudad">Selecione Idioma de Origen/Destino:</label>
+    <h2 for="ciudad">Selecione Idioma de Origen/Destino:</h2>
     <br>
-    <label for="ciudad">Origen:</label>
+    <h3 for="ciudad">Origen:</h3>
     <select class="form-control" name="IdiomaOrigen"
-    [(ngModel)]="text.org">
-      <option value="en">Inglés</option>
+    [(ngModel)]="text.org" #tipo="ngModel" ngModel required>
+      <option  value="en">Inglés</option>
       <option value="es">Español</option>
       <option value="pt">Portugués</option>
       <option value="fr">Francés</option>
       <option value="ru">Ruso</option>
       <option value="it">Italiano</option>
     </select>
+    <div class="mensaje-de-error" *ngIf="tipo.invalid">
+      <div class="text-danger font-weight-bolder" *ngIf="tipo?.errors.required">Tipo requerido</div>
+  </div>
     <br>
-    <label for="ciudad">Destino:</label>
+    <h3 for="ciudad">Destino:</h3>
     <select class="form-control" name="IdiomaDestino"
-    [(ngModel)]="text.des">
+    [(ngModel)]="text.des" #tipo="ngModel" ngModel required>
       <option value="en">Inglés</option>
       <option value="es">Español</option>
       <option value="pt">Portugués</option>
@@ -31,13 +37,16 @@
       <option value="ru">Ruso</option>
       <option value="it">Italiano</option>
     </select>
+    <div class="mensaje-de-error" *ngIf="tipo.invalid">
+      <div class="text-danger font-weight-bolder" *ngIf="tipo?.errors.required">Tipo requerido</div>
+  </div>
     <br>
-    <button type="submit" class="btn btn-primary" (click)="traducirText(text.org,text.des,text.text)"
+    <button type="submit" class="btn btn-primary" (click)="traducirText(text.org,text.des,text.text,formMsg)"
     >Buscar</button>
   </form>
   <br>
-  <label >Resultado: </label>
-  <h2>{{resultado}}</h2>
+  <h2 >Resultado: </h2>
+  <h1>{{resultado}}</h1>
 
 </div>
 

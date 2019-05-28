@@ -1,29 +1,37 @@
-<label >Resultado: </label>
 <br>
-<h2>el Valor de Compra es: {{valorCompra}}</h2>
-<h2>el Valor de Venta es: {{valorVenta}}</h2>
+<h1>Cambio de Divisas</h1>
 <br>
-
-<input type="number" class="form-control" id="idMontoRecibido"
-      name="montoRecibido"
-      [(ngModel)]="moneda.montoRecibido">
+<h1 style="color: red;">El Valor de Compra es: {{valorCompra}}</h1>
+<h1 style=" color: green;">El Valor de Venta es: {{valorVenta}}</h1>
 <br>
-<form>
-    <div class="custom-control custom-radio custom-control-inline">
-      <input type="radio" class="custom-control-input" id="customRadio" name="txtTipoCambio" value="true"
-        [(ngModel)]="moneda.tipoCambio" >
-      <label class="custom-control-label" for="customRadio">Cambio de $ (pesos) a USD (dólar)</label>
-    </div>
-    <div class="custom-control custom-radio custom-control-inline">
-      <input type="radio" class="custom-control-input" id="customRadio2" name="txtTipoCambio" value="false"
-        [(ngModel)]="moneda.tipoCambio" >
-      <label class="custom-control-label" for="customRadio2">Cambio de USD (dólar) a $ (pesos)</label>
-    </div>
-  </form>
+<div>
+  <input type="number" class="form-control" id="idMontoRecibido" name="montoRecibido"
+    [(ngModel)]="moneda.montoRecibido"   id="cantidadV"
+    name="cantidadV" min="1" #venta="ngModel" ngModel negativo required>
+  <div class="mensaje-de-error" *ngIf="venta.touched && venta.invalid">
+    <div class="text-danger font-weight-bolder" *ngIf="venta?.errors.required">Monto requerido</div>
+    <div class="text-danger font-weight-bolder" *ngIf="venta?.errors.negativo">El monto debe ser mayor a cero</div>
+  </div>
+</div>
 <br>
-  <div class="col-md-12 col-sm-12 col-xs-12">
-      <input type="button" class="btn btn-warning btn-block" value="Convertir" (click)="convertirMoneda()" />
-    </div>
-    <br>
-    <h1>Monto a Entregar: <span class="badge badge-secondary">{{montoMostrar}} </span></h1>
-
+<form class="p-2 text-center mt-2 shadow rounded" id="form" #formValor="ngForm">
+  <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" class="custom-control-input" id="customRadio" name="txtTipoCambio" value="true"
+      [(ngModel)]="moneda.tipoCambio"  #tipo="ngModel" ngModel required>
+    <label class="custom-control-label" for="customRadio">Cambio de $ (pesos) a USD (dólar)</label>
+  </div>
+  <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" class="custom-control-input" id="customRadio2" name="txtTipoCambio" value="false"
+      [(ngModel)]="moneda.tipoCambio"  #tipo="ngModel" ngModel required>
+    <label class="custom-control-label" for="customRadio2">Cambio de USD (dólar) a $ (pesos)</label>
+  </div>
+  <div class="mensaje-de-error" *ngIf="tipo.touched && tipo.invalid">
+    <div class="text-danger font-weight-bolder" *ngIf="tipo?.errors.required">Tipo requerido</div>
+</div>
+</form>
+<br>
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <input type="button" class="btn btn-warning btn-block" value="Convertir" (click)="convertirMoneda(formValor)" />
+</div>
+<br>
+<h1>Monto a Entregar: <span class="badge badge-secondary">{{montoMostrar}} </span></h1>

@@ -1,21 +1,27 @@
 <div class="container">
   <h2>El Clima en:</h2>
-  <form action="">
+  <form id="formulario" #formCiudadBuscar="ngForm" action="">
     <div class="form-group">
-      <label for="ciudad">Email:</label>
+      <label for="ciudad">Ingrese la Ciudad o Codigo Postal:</label>
       <input type="text" class="form-control" id="idCiudad"
       placeholder="Ej: '''San Salvador'' de Jujuy o ''4600''" name="ciudad"
-      [(ngModel)]="ciudadBuscar">
+      [(ngModel)]="ciudadBuscar" id="legajo" minlength="3"
+      maxlength="20" #ciudad="ngModel" required>
+      <div class="mensaje-de-error" *ngIf="ciudad.touched && !ciudad.valid">
+        <div class="text-danger font-weight-bolder" *ngIf="ciudad?.errors.required">Ciudad o CP es requerido.</div>
+        <div class="text-danger font-weight-bolder" *ngIf="ciudad?.errors.minlength">
+          Por lo menos debe Ingresar {{ ciudad?.errors.minlength.requiredLength }} caracteres
+        </div>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary" (click)="BuscarWeathers(ciudadBuscar)"
+    <button type="submit" class="btn btn-primary" (click)="BuscarWeathers(ciudadBuscar,formCiudadBuscar)"
     data-toggle="modal" data-target="#myModal">Buscar</button>
   </form>
 </div>
 
 
-
 <!-- The Modal -->
-<div class="modal fade" id="myModal">
+<div class="modal fade" id="myModal" *ngIf="formCiudadBuscar.valid==true">
   <div class="modal-dialog"  >
     <div class="modal-content">
 

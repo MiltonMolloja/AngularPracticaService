@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { TextService } from './../../services/punto03/text.service';
 import { Text } from './../../models/punto03/text';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-punto03',
@@ -24,7 +25,8 @@ export class Punto03Component implements OnInit {
   }
 
 
-  traducirText(org: string, des: string, text: string) {
+  traducirText(org: string, des: string, text: string,formMsg : NgForm) {
+    if (formMsg.valid == true) {
     this.textService.getTexts(org, des, text).subscribe(
       (result) => {
         //es necesario que convierta el JSON que
@@ -46,6 +48,7 @@ export class Punto03Component implements OnInit {
         alert("Error en la petición");
       }
     )
+    }
   }
 
 }

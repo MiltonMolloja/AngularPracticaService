@@ -11,11 +11,10 @@ import { Punto03Component } from './components/punto03/punto03.component';
 import { Punto04Component } from './components/punto04/punto04.component';
 
 
-import { Invalida, Negativo, SinEspacios } from "./validaciones.directive";
+import {HttpClientModule} from '@angular/common/http';
 
 import { FormsModule } from "@angular/forms";
-
-import {HttpClientModule} from '@angular/common/http';
+import { Invalida, Negativo, SinEspacios } from "./validaciones.directive";
 
 
 @NgModule({
