@@ -27,9 +27,9 @@
               "src/styles.css"
             ],
             "scripts": [
-              "./src/assets/js/scrip.js",
               "./node_modules/jquery/dist/jquery.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.js"
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "./src/assets/js/script.js"
             ],
             "es5BrowserSupport": true
           },

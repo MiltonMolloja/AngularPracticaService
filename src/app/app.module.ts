@@ -15,6 +15,7 @@ import {HttpClientModule} from '@angular/common/http';
 
 import { FormsModule } from "@angular/forms";
 import { Invalida, Negativo, SinEspacios } from "./validaciones.directive";
+import * as $ from 'jquery';
 
 
 @NgModule({
