@@ -72,6 +72,10 @@ export class Punto01Component implements OnInit {
     }
   }
 
+  IniciarWeathers() {
+    this.weather = new Weather();
+  }
+
 
 
 }
